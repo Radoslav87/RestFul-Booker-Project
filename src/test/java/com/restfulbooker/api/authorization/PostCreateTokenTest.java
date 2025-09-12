@@ -54,6 +54,7 @@ public class PostCreateTokenTest extends ApiBaseTest {
         softAssert.assertAll();
     }
 
+    //New comment is added
     @Issue("RB-001")
     @Test(groups = {"BUG", "CONTRACT"},description = "CONTRACT: Invalid credentials must return 401 ")
     @Severity(SeverityLevel.NORMAL)
