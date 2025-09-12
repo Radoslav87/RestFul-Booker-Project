@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Restful Booker Booking API Tests" verbose="1">
+    <test name="Booking API Tests" thread-count="1">
+
+        <groups>
+            <run>
+                <exclude name="BUG"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="com.restfulbooker.api.booking.PostCreateBookingTest"/>
+            <class name="com.restfulbooker.api.booking.GetBookingTest"/>
+            <class name="com.restfulbooker.api.booking.PutUpdateBookingTest"/>
+            <class name="com.restfulbooker.api.booking.PatchUpdateBookingTest"/>
+            <class name="com.restfulbooker.api.booking.DeleteBookingTest"/>
+        </classes>
+    </test>
+</suite>

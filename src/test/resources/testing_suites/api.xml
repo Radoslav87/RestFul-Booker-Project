@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="API – Functional" verbose="1" parallel="false">
+    <test name="Authorization + Booking (functional)">
+
+        <packages>
+            <package name="com.restfulbooker.api.authorization"/>
+            <package name="com.restfulbooker.api.booking"/>
+        </packages>
+    </test>
+</suite>

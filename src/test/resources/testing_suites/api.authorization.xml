@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite verbose="1" name="Restful Booker Authorization API Tests">
+
+    <test name="Authorization API Tests" thread-count="1">
+        <classes>
+            <class name="com.restfulbooker.api.authorization.PostCreateTokenTest"/>
+
+        </classes>
+    </test>
+
+</suite>
