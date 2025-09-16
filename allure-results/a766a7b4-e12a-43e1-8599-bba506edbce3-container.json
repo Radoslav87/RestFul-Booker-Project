@@ -1,1 +1,0 @@
-{"uuid":"a766a7b4-e12a-43e1-8599-bba506edbce3","name":"com.restfulbooker.tests.auth.PostCreateTokenTest","children":["4799a921-8ddc-41ce-8ac4-2fb4b185e902"],"befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1756911726139,"stop":1756911727255}],"afters":[],"start":1756911726066,"stop":1756911731471}
