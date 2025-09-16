@@ -1,38 +1,30 @@
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# =========================
+# Java / Maven
+# =========================
+**/target/
 
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-*.iws
-*.iml
-*.ipr
+#
+!/mvnw
+!/mvnw.cmd
+!/.mvn/wrapper/**
 
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# =========================
+# Allure
+# =========================
+.allure/
+allure-results/
+allure-report/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
+# =========================
+# IDE / Editors
+# =========================
+.idea/
 .vscode/
+*.iml
 
-### Mac OS ###
+# =========================
+# OS / Misc
+# =========================
 .DS_Store
+Thumbs.db
+*.log
