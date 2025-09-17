@@ -15,7 +15,7 @@ public class BaseTest {
 
     @BeforeSuite(alwaysRun = true)
     public void initSuiteBase() {
-        loadFromClasspath("testing_suites/config.properties", CONFIG_PROPS);
+        loadFromClasspath("data/config.properties", CONFIG_PROPS);
     }
 
     protected String cfg(String key) {

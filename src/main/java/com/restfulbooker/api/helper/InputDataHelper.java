@@ -7,7 +7,7 @@ import static org.testng.Assert.fail;
 
 public class InputDataHelper {
 
-    private static final String DATA_PROPS = "testing_suites/data.properties";
+    private static final String DATA_PROPS = "data/data.properties";
 
     private final Properties props;
 
@@ -57,7 +57,8 @@ public class InputDataHelper {
     public boolean bookingUpdDepositpaid() {
         return Boolean.parseBoolean(get("booking.update.depositpaid"));
     }
-    public Date   bookingUpdCheckin() {
+    public Date   bookingUpdCheckin()
+    {
         return Date.valueOf(get("booking.update.checkin"));
     }
     public Date   bookingUpdCheckout() {
