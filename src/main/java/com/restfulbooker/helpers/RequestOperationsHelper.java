@@ -1,4 +1,4 @@
-package com.restfulbooker.api.helper;
+package com.restfulbooker.helpers;
 
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.http.Method;

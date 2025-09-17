@@ -1,10 +1,9 @@
-package com.restfulbooker.factories.booking;
+package com.restfulbooker.api.factories.booking;
 
 import com.restfulbooker.api.dtos.booking.BookingDatesDTO;
 import com.restfulbooker.api.dtos.booking.BookingPayloadDTO;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class PostBookingFactory {
 

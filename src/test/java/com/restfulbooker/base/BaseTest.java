@@ -15,7 +15,7 @@ public class BaseTest {
 
     @BeforeSuite(alwaysRun = true)
     public void initSuiteBase() {
-        loadFromClasspath("data/config.properties", CONFIG_PROPS);
+        loadFromClasspath("dataPropertyFiles/config.properties", CONFIG_PROPS);
     }
 
     protected String cfg(String key) {
@@ -32,14 +32,14 @@ public class BaseTest {
 
     @AfterSuite(alwaysRun = true)
     public void writeAllureEnvironment() {
-        // Allure сам ще прочете този файл, ако е в allure.results.directory
+
         String dir = System.getProperty("allure.results.directory", "target/allure-results");
         try {
             Path outDir = Path.of(dir);
             Files.createDirectories(outDir);
             Path env = outDir.resolve("environment.properties");
 
-            // Ако имаш webUrl – покажи него, иначе baseUri
+
             String envVal = cfg("webUrl", cfg("baseUri", "n/a"));
 
             try (PrintWriter w = new PrintWriter(Files.newBufferedWriter(env))) {

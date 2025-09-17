@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import java.time.LocalDate;
-import static com.restfulbooker.api.constants.GeneralConstants.DATE_TIME_FORMAT;
+import static com.restfulbooker.constants.GeneralConstants.DATE_TIME_FORMAT;
 
 @Getter
 @Setter

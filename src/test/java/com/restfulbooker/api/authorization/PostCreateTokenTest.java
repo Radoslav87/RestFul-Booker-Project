@@ -1,17 +1,16 @@
 package com.restfulbooker.api.authorization;
 
-import com.restfulbooker.api.constants.ErrorMessageConstants;
 import com.restfulbooker.api.dtos.authorization.CreateTokenErrorResponseDTO;
 import com.restfulbooker.api.dtos.authorization.CreateTokenResponseDTO;
-import com.restfulbooker.api.helper.InputDataHelper;
+import com.restfulbooker.helpers.InputDataHelper;
 import com.restfulbooker.base.ApiBaseTest;
-import com.restfulbooker.steps.authorization.CreateTokenSteps;
+import com.restfulbooker.api.steps.authorization.CreateTokenSteps;
 import io.qameta.allure.*;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import static com.restfulbooker.api.constants.ErrorMessageConstants.BAD_CREDENTIALS;
+import static com.restfulbooker.constants.ErrorMessageConstants.BAD_CREDENTIALS;
 
 @Feature("Authorization")
 public class PostCreateTokenTest extends ApiBaseTest {

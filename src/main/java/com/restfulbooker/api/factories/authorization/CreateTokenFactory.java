@@ -1,4 +1,4 @@
-package com.restfulbooker.factories.authorization;
+package com.restfulbooker.api.factories.authorization;
 
 import com.restfulbooker.api.dtos.authorization.CreateTokenRequestDTO;
 

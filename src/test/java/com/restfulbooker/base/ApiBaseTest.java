@@ -23,20 +23,14 @@ public class ApiBaseTest extends BaseTest {
     public void initSuiteApi() {
         super.initSuiteBase();
 
-        // 1) Base URL (fail fast)
         String base = cfg("baseUri");
         if (base == null || base.isBlank()) {
             throw new IllegalStateException("Missing 'baseUri' in config or -DbaseUri");
         }
         RestAssured.baseURI = base;
 
-        // 2) Allure filter
         var allure = new AllureRestAssured();
 
-        // 3) Строг Jackson ObjectMapper:
-        // - JavaTimeModule за LocalDate
-        // - ISO дати (yyyy-MM-dd), не timestamps
-        // - fail при непознати полета/коерсии/плаващи към int и т.н.
         ObjectMapper strictMapper = new ObjectMapper()
                 .registerModule(new JavaTimeModule())
                 .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
@@ -44,7 +38,6 @@ public class ApiBaseTest extends BaseTest {
                 .configure(DeserializationFeature.ACCEPT_FLOAT_AS_INT, false)
                 .configure(MapperFeature.ALLOW_COERCION_OF_SCALARS, false);
 
-        // 4) Глобална RestAssured конфигурация
         RestAssured.config = RestAssured.config()
                 .encoderConfig(EncoderConfig.encoderConfig()
                         .appendDefaultContentCharsetToContentTypeIfUndefined(false))
@@ -54,11 +47,11 @@ public class ApiBaseTest extends BaseTest {
                         ObjectMapperConfig.objectMapperConfig()
                                 .jackson2ObjectMapperFactory((cls, charset) -> strictMapper)
                 )
-                // по-точни числа в JsonPath (без double артефакти)
+
                 .jsonConfig(JsonConfig.jsonConfig()
                         .numberReturnType(JsonPathConfig.NumberReturnType.BIG_DECIMAL));
 
-        // 5) Логове
+
         boolean verbose = Boolean.parseBoolean(cfg("isLogEnabled", "false"));
         if (verbose) {
             RestAssured.replaceFiltersWith(

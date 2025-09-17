@@ -1,4 +1,4 @@
-package com.restfulbooker.api.constants;
+package com.restfulbooker.constants;
 
 public class BasePathsConstants {
 

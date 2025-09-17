@@ -1,4 +1,4 @@
-package com.restfulbooker.api.helper;
+package com.restfulbooker.helpers;
 
 import java.sql.Date;
 import java.util.Properties;
@@ -7,7 +7,7 @@ import static org.testng.Assert.fail;
 
 public class InputDataHelper {
 
-    private static final String DATA_PROPS = "data/data.properties";
+    private static final String DATA_PROPS = "dataPropertyFiles/data.properties";
 
     private final Properties props;
 
@@ -75,6 +75,6 @@ public class InputDataHelper {
         return get("booking.lastname.patch");
     }
     public String invalidPassword() {
-        return get("invalid.password"); // вторият арг. е default, по желание
+        return get("invalid.password");
     }
 }

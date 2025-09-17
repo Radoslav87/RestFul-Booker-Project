@@ -1,13 +1,13 @@
 package com.restfulbooker.api.booking;
 
-import com.restfulbooker.TestDataPathConstants.TestDataPathConstants;
-import com.restfulbooker.api.constants.ErrorMessageConstants;
+import com.restfulbooker.dataConstants.TestDataPathConstants;
+import com.restfulbooker.constants.ErrorMessageConstants;
 import com.restfulbooker.api.dtos.booking.BookingPayloadDTO;
 import com.restfulbooker.api.dtos.booking.CreateBookingResponseDTO;
-import com.restfulbooker.api.helper.InputDataHelper;
+import com.restfulbooker.helpers.InputDataHelper;
 import com.restfulbooker.base.ApiBaseTest;
-import com.restfulbooker.factories.booking.PostBookingFactory;
-import com.restfulbooker.steps.booking.PostBookingSteps;
+import com.restfulbooker.api.factories.booking.PostBookingFactory;
+import com.restfulbooker.api.steps.booking.PostBookingSteps;
 import io.qameta.allure.*;
 
 import org.testng.annotations.BeforeClass;

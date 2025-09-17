@@ -1,12 +1,12 @@
-package com.restfulbooker.steps.booking;
+package com.restfulbooker.api.steps.booking;
 
-import com.restfulbooker.api.helper.CustomRequestSpecification;
-import com.restfulbooker.api.helper.RequestOperationsHelper;
+import com.restfulbooker.helpers.CustomRequestSpecification;
+import com.restfulbooker.helpers.RequestOperationsHelper;
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-import static com.restfulbooker.api.constants.BasePathsConstants.DELETE_BOOKING;
+import static com.restfulbooker.constants.BasePathsConstants.DELETE_BOOKING;
 import static org.apache.http.HttpStatus.*;
 
 public class DeleteBookingSteps {

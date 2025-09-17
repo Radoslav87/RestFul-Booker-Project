@@ -1,17 +1,17 @@
-package com.restfulbooker.steps.authorization;
+package com.restfulbooker.api.steps.authorization;
 
 import com.restfulbooker.api.dtos.authorization.CreateTokenErrorResponseDTO;
 import com.restfulbooker.api.dtos.authorization.CreateTokenRequestDTO;
 import com.restfulbooker.api.dtos.authorization.CreateTokenResponseDTO;
-import com.restfulbooker.api.helper.CustomRequestSpecification;
-import com.restfulbooker.api.helper.RequestOperationsHelper;
-import com.restfulbooker.factories.authorization.CreateTokenFactory;
+import com.restfulbooker.helpers.CustomRequestSpecification;
+import com.restfulbooker.helpers.RequestOperationsHelper;
+import com.restfulbooker.api.factories.authorization.CreateTokenFactory;
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 
-import static com.restfulbooker.api.constants.BasePathsConstants.POST_AUTHENTICATION;
+import static com.restfulbooker.constants.BasePathsConstants.POST_AUTHENTICATION;
 
 public class CreateTokenSteps {
 

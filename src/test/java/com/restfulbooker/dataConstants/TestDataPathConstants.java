@@ -1,4 +1,4 @@
-package com.restfulbooker.TestDataPathConstants;
+package com.restfulbooker.dataConstants;
 
 public class TestDataPathConstants {
 

@@ -1,4 +1,4 @@
-package com.restfulbooker.api.helper;
+package com.restfulbooker.helpers;
 
 import io.restassured.http.ContentType;
 import io.restassured.http.Header;

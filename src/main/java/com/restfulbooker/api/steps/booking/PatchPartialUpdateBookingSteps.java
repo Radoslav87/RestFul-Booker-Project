@@ -1,16 +1,16 @@
-package com.restfulbooker.steps.booking;
+package com.restfulbooker.api.steps.booking;
 
 import com.restfulbooker.api.dtos.booking.BookingPayloadDTO;
 import com.restfulbooker.api.dtos.booking.PatchBookingRequestDTO;
-import com.restfulbooker.api.helper.CustomRequestSpecification;
-import com.restfulbooker.api.helper.RequestOperationsHelper;
-import com.restfulbooker.factories.booking.PartialUpdateBookingFactory;
+import com.restfulbooker.helpers.CustomRequestSpecification;
+import com.restfulbooker.helpers.RequestOperationsHelper;
+import com.restfulbooker.api.factories.booking.PartialUpdateBookingFactory;
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 
-import static com.restfulbooker.api.constants.BasePathsConstants.PATCH_BOOKING;
+import static com.restfulbooker.constants.BasePathsConstants.PATCH_BOOKING;
 
 public class PatchPartialUpdateBookingSteps {
 

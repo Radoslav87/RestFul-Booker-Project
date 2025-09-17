@@ -1,4 +1,4 @@
-package com.restfulbooker.api.helper;
+package com.restfulbooker.helpers;
 
 import java.io.InputStream;
 import java.util.Properties;

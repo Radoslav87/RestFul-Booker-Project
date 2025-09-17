@@ -1,4 +1,4 @@
-package com.restfulbooker.factories.booking;
+package com.restfulbooker.api.factories.booking;
 
 import com.restfulbooker.api.dtos.booking.PatchBookingRequestDTO;
 

@@ -1,9 +1,9 @@
-package com.restfulbooker.steps.booking;
+package com.restfulbooker.api.steps.booking;
 
-import com.restfulbooker.api.constants.BasePathsConstants;
+import com.restfulbooker.constants.BasePathsConstants;
 import com.restfulbooker.api.dtos.booking.BookingPayloadDTO;
-import com.restfulbooker.api.helper.CustomRequestSpecification;
-import com.restfulbooker.api.helper.RequestOperationsHelper;
+import com.restfulbooker.helpers.CustomRequestSpecification;
+import com.restfulbooker.helpers.RequestOperationsHelper;
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
