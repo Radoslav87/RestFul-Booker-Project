@@ -20,46 +20,48 @@ public class CreateTokenSteps {
 
     public CreateTokenSteps() {
         requestOperationsHelper = new RequestOperationsHelper();
-        requestSpecification    = new CustomRequestSpecification();
+        requestSpecification = new CustomRequestSpecification();
 
         requestSpecification.addBasePath(POST_AUTHENTICATION);
         requestSpecification.setContentType(ContentType.JSON);
     }
 
-    @Step("Create token (200 OK)")
-    public CreateTokenResponseDTO createToken(String username, String password){
-        Response response = createTokenResponse(username,password);
+    @Step("Create token successfully")
+    public CreateTokenResponseDTO createToken(String username, String password) {
 
-        response.then().statusCode(HttpStatus.SC_OK);
+        return createTokenResponse(username, password, HttpStatus.SC_OK)
 
-        return response.as(CreateTokenResponseDTO.class);
+                .as(CreateTokenResponseDTO.class);
 
     }
 
-    @Step("Create token with invalid credentials (CURRENT behavior: 200 + error body)")
+    @Step("Create token with invalid credentials")
     public CreateTokenErrorResponseDTO createTokenInvalidCredentials(String username, String password) {
-        Response response = createTokenResponse(username, password);
 
-        response.then().statusCode(HttpStatus.SC_OK);
-        return response.as(CreateTokenErrorResponseDTO.class);
+        return createTokenResponse(username, password, HttpStatus.SC_OK)
+
+                .as(CreateTokenErrorResponseDTO.class);
     }
 
-    @Step("Create token with invalid credentials MUST be 401 (CONTRACT)")
+    @Step("Create token successfully")
     public CreateTokenErrorResponseDTO createTokenUnauthorizedContract(String username, String badPassword) {
-        Response response = createTokenResponse(username, badPassword);
 
-        response.then().statusCode(HttpStatus.SC_UNAUTHORIZED);
-        return response.as(CreateTokenErrorResponseDTO.class);
+        return createTokenResponse(username, badPassword, HttpStatus.SC_UNAUTHORIZED)
+
+                .as(CreateTokenErrorResponseDTO.class);
     }
 
-    private Response createTokenResponse(String username, String password){
+    private Response createTokenResponse(String username, String password, int expectedStatusCode) {
         CreateTokenFactory createTokenFactory = new CreateTokenFactory();
         CreateTokenRequestDTO createTokenFactoryRequestDto = createTokenFactory.
-                createTokenRequest(username,password);
+                createTokenRequest(username, password);
 
         requestSpecification.addBodyToRequest(createTokenFactoryRequestDto);
-        return requestOperationsHelper
+        Response response = requestOperationsHelper
                 .sendPostRequest(requestSpecification.getFilterableRequestSpecification());
+
+        response.then().statusCode(expectedStatusCode);
+        return response;
 
     }
 }

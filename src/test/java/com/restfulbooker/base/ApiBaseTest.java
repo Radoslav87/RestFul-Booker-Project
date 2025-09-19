@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.restfulbooker.helpers.InputDataHelper;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.config.EncoderConfig;
@@ -19,9 +20,12 @@ import org.testng.annotations.BeforeSuite;
 
 public class ApiBaseTest extends BaseTest {
 
+    protected InputDataHelper data;
+
     @BeforeSuite(alwaysRun = true)
     public void initSuiteApi() {
         super.initSuiteBase();
+        data = new InputDataHelper();
 
         String base = cfg("baseUri");
         if (base == null || base.isBlank()) {

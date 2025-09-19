@@ -51,22 +51,7 @@ public class InputDataHelper {
     public String bookingUpdLastname() {
         return get("booking.update.lastname");
     }
-    public int    bookingUpdTotalprice() {
-        return Integer.parseInt(get("booking.update.totalprice"));
-    }
-    public boolean bookingUpdDepositpaid() {
-        return Boolean.parseBoolean(get("booking.update.depositpaid"));
-    }
-    public Date   bookingUpdCheckin()
-    {
-        return Date.valueOf(get("booking.update.checkin"));
-    }
-    public Date   bookingUpdCheckout() {
-        return Date.valueOf(get("booking.update.checkout"));
-    }
-    public String bookingUpdAdditionalneeds() {
-        return get("booking.update.additionalneeds");
-    }
+
     public String bookingFirstnamePatch() {
         return get("booking.firstname.patch");
     }

@@ -25,26 +25,31 @@ public class DeleteBookingSteps {
     @Step("Delete booking")
     public String deleteBooking(String token, int bookingId) {
         Response response = deleteBookingResponse(token, bookingId);
+
         response.then().statusCode(SC_CREATED);
+
         return response.asString();
     }
 
     @Step("Delete booking id with invalid/missing token (expect 403)")
     public String deleteBookingForbiddenError(String badToken, int bookingId) {
         Response response = deleteBookingResponse(badToken, bookingId);
+
         response.then().statusCode(SC_FORBIDDEN);
+
         return response.asString();
     }
 
     @Step("CONTRACT: Delete booking id should return 200 OK")
     public void deleteBookingOkContract(String token, int bookingId) {
         deleteBookingResponse(token, bookingId)
+
                 .then()
                 .statusCode(SC_OK);
     }
 
-    private Response deleteBookingResponse(String token, Object bookingIdOrAlpha) {
-        requestSpecification.addPathParam("Id", bookingIdOrAlpha);
+    private Response deleteBookingResponse(String token, Object bookingId) {
+        requestSpecification.addPathParam("Id", bookingId);
         requestSpecification.setTokenCookie(token);
 
         return requestOperationsHelper

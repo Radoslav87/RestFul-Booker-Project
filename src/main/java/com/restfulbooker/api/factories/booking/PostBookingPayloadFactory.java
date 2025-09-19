@@ -5,7 +5,7 @@ import com.restfulbooker.api.dtos.booking.BookingPayloadDTO;
 
 import java.time.LocalDate;
 
-public class PostBookingFactory {
+public class PostBookingPayloadFactory {
 
     public BookingPayloadDTO createBookingPayloadDTO(String firstname, String lastname, int totalprice, boolean depositpaid, LocalDate checkin, LocalDate checkout, String additionalneeds) {
         BookingDatesDTO dates = BookingDatesDTO.builder()
@@ -21,6 +21,17 @@ public class PostBookingFactory {
                 .bookingdates(dates)
                 .additionalneeds(additionalneeds)
                 .build();
+    }
+
+    public BookingPayloadDTO createPayloadMissingField(BookingPayloadDTO baseDto) {
+
+        return BookingPayloadDTO.builder()
+                .firstname(baseDto.getFirstname())
+                .lastname(baseDto.getLastname())
+                .totalprice(baseDto.getTotalprice())
+                .bookingdates(baseDto.getBookingdates())
+                .additionalneeds(baseDto.getAdditionalneeds())
+                .build(); // intentionally missing depositpaid
     }
 }
 

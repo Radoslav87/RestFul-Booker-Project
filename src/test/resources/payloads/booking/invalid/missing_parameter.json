@@ -1,8 +1,0 @@
-{
-  "firstname": "Any",
-  "lastname": "Any",
-  "totalprice": 111,
-  "depositpaid": ,
-  "bookingdates": { "checkin": "2025-09-01", "checkout": "2025-09-04" },
-  "additionalneeds": "Breakfast"
-}

@@ -8,4 +8,5 @@ public class ErrorMessageConstants {
     public static final String NOT_FOUND_ERROR = "Not Found";
     public static final String FORBIDDEN_ERROR = "Forbidden";
     public static final String BAD_REQUEST_ERROR = "Bad Request";
+    public static final String UNSUPPORTED_MEDIA_TYPE = "Unsupported Media Type";
 }

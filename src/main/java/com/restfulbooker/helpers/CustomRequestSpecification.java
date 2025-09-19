@@ -40,9 +40,7 @@ public class CustomRequestSpecification {
 
 
     public void setCookie(String name, String value) {
-        // махни предишен cookie със същото име (ако библиотеката го поддържа)
         try { spec.removeCookie(name); } catch (Throwable ignored) {}
-        // махни суровия "Cookie" header, ако е останал от предишна заявка
         spec.removeHeader("Cookie");
 
         spec.cookie(name, value == null ? "" : value);

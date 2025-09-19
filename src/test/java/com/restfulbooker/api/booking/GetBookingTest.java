@@ -4,10 +4,8 @@ import com.restfulbooker.constants.ErrorMessageConstants;
 import com.restfulbooker.base.ApiBaseTest;
 import com.restfulbooker.api.dtos.booking.BookingPayloadDTO;
 import com.restfulbooker.api.dtos.booking.CreateBookingResponseDTO;
-import com.restfulbooker.api.factories.booking.PostBookingFactory;
 import com.restfulbooker.api.steps.booking.GetBookingSteps;
 import com.restfulbooker.api.steps.booking.PostBookingSteps;
-import com.restfulbooker.helpers.InputDataHelper;
 import io.qameta.allure.*;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -22,7 +20,6 @@ public class GetBookingTest extends ApiBaseTest {
 
     private PostBookingSteps postSteps;
     private GetBookingSteps getSteps;
-    private InputDataHelper data;
 
     private int bookingId;
     private BookingPayloadDTO expectedPayload;
@@ -30,15 +27,12 @@ public class GetBookingTest extends ApiBaseTest {
     @BeforeClass(alwaysRun = true)
     public void setup() {
         postSteps = new PostBookingSteps();
-        getSteps  = new GetBookingSteps();
-        data      = new InputDataHelper();
+        getSteps = new GetBookingSteps();
 
-        LocalDate checkin  = data.bookingCheckin().toLocalDate();
-        LocalDate checkout = data.bookingCheckout().toLocalDate();
+        CreateBookingResponseDTO created = postSteps.createBooking(data.bookingFirstname(), data.bookingLastname(), data.bookingTotalprice(), data.bookingDepositpaid(), data.bookingCheckin().toLocalDate(), data.bookingCheckout().toLocalDate(), data.bookingAdditionalneeds());
 
-        expectedPayload = new PostBookingFactory().createBookingPayloadDTO(data.bookingFirstname(), data.bookingLastname(), data.bookingTotalprice(), data.bookingDepositpaid(), checkin, checkout, data.bookingAdditionalneeds());
-        CreateBookingResponseDTO created = postSteps.createBooking(expectedPayload);
         bookingId = created.getBookingid();
+        expectedPayload = created.getBooking();
     }
 
     @Test(description = "Get booking by id")
@@ -49,12 +43,12 @@ public class GetBookingTest extends ApiBaseTest {
 
         SoftAssert softAssert = new SoftAssert();
 
-        softAssert.assertEquals(actual.getFirstname(),expectedPayload.getFirstname(),"firstname mismatch");
-        softAssert.assertEquals(actual.getLastname(),expectedPayload.getLastname(), "lastname mismatch");
-        softAssert.assertEquals(actual.getTotalprice(),expectedPayload.getTotalprice(),"totalprice mismatch");
-        softAssert.assertEquals(actual.isDepositpaid(),expectedPayload.isDepositpaid(),"depositpaid mismatch");
-        softAssert.assertEquals(actual.getAdditionalneeds(),expectedPayload.getAdditionalneeds(),"additionalneeds mismatch");
-        softAssert.assertEquals(actual.getBookingdates().getCheckin(),  expectedPayload.getBookingdates().getCheckin(),  "checkin mismatch");
+        softAssert.assertEquals(actual.getFirstname(), expectedPayload.getFirstname(), "firstname mismatch");
+        softAssert.assertEquals(actual.getLastname(), expectedPayload.getLastname(), "lastname mismatch");
+        softAssert.assertEquals(actual.getTotalprice(), expectedPayload.getTotalprice(), "totalprice mismatch");
+        softAssert.assertEquals(actual.isDepositpaid(), expectedPayload.isDepositpaid(), "depositpaid mismatch");
+        softAssert.assertEquals(actual.getAdditionalneeds(), expectedPayload.getAdditionalneeds(), "additionalneeds mismatch");
+        softAssert.assertEquals(actual.getBookingdates().getCheckin(), expectedPayload.getBookingdates().getCheckin(), "checkin mismatch");
         softAssert.assertEquals(actual.getBookingdates().getCheckout(), expectedPayload.getBookingdates().getCheckout(), "checkout mismatch");
 
         softAssert.assertAll();
@@ -64,13 +58,14 @@ public class GetBookingTest extends ApiBaseTest {
     @Description("Get booking returns 404 Not Found for missing id")
     @Severity(SeverityLevel.MINOR)
     public void getBookingNotExistingIdTest() {
-        int notExistingId = 999_999_999;
 
-        String body = getSteps.getBookingNotFoundError(notExistingId);
+        int nonExistentId = Integer.MAX_VALUE;
+
+        String errorBody = getSteps.getBookingNotFoundError(nonExistentId);
 
         SoftAssert softAssert = new SoftAssert();
 
-        softAssert.assertEquals(body, ErrorMessageConstants.NOT_FOUND_ERROR,"Error body should be 'Not Found'");
+        softAssert.assertEquals(errorBody, ErrorMessageConstants.NOT_FOUND_ERROR, "Expected error message 'Not Found'");
 
         softAssert.assertAll();
     }
