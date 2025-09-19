@@ -16,14 +16,15 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.path.json.config.JsonPathConfig;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeClass;
+
 
 public class ApiBaseTest extends BaseTest {
 
     protected InputDataHelper data;
 
-    @BeforeSuite(alwaysRun = true)
-    public void initSuiteApi() {
+    @BeforeClass(alwaysRun = true)
+    public void initApiBase() {
         super.initSuiteBase();
         data = new InputDataHelper();
 
